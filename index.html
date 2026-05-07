@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:black;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:white;
+}
+
+.container{
+    text-align:center;
+}
+
+.click-text{
+    margin-top:25px;
+    font-size:20px;
+    opacity:0.7;
+    animation: parpadeo 1.5s infinite;
+    cursor:pointer;
+}
+
+@keyframes parpadeo{
+    0%,100%{opacity:0.3;}
+    50%{opacity:1;}
+}
+
+.gift-box{
+    width:170px;
+    height:170px;
+    background:#111;
+    border:3px solid white;
+    border-radius:20px;
+    position:relative;
+    cursor:pointer;
+    transition:0.5s;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    box-shadow:0 0 25px rgba(255,255,255,0.2);
+}
+
+.gift-box::before{
+    content:"🎁";
+    font-size:70px;
+}
+
+.message{
+    position:absolute;
+    width:320px;
+    padding:25px;
+    background:#111;
+    border:2px solid white;
+    border-radius:20px;
+    color:white;
+    font-size:20px;
+    line-height:1.5;
+    opacity:0;
+    transform:scale(0.5);
+    transition:0.6s;
+    pointer-events:none;
+    box-shadow:0 0 30px rgba(255,255,255,0.2);
+}
+
+.show-message{
+    opacity:1;
+    transform:scale(1);
+}
+
+.hide-box{
+    transform:scale(0);
+    opacity:0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="gift-box" id="gift"></div>
+
+    <div class="click-text" id="clickText">
+        Pulsar
+    </div>
+
+    <div class="message" id="message">
+        Te amo, perdón si no soy lo que esperabas,<br><br>
+        pero siempre te voy a amar.
+    </div>
+
+</div>
+
+<script>
+const gift = document.getElementById("gift");
+const message = document.getElementById("message");
+const clickText = document.getElementById("clickText");
+
+gift.addEventListener("click", () => {
+    gift.classList.add("hide-box");
+    clickText.style.display = "none";
+
+    setTimeout(() => {
+        message.classList.add("show-message");
+    }, 500);
+});
+</script>
+
+</body>
+  </html>
